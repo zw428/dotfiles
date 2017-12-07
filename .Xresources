@@ -1,6 +1,10 @@
-URxvt*background: black
+!URxvt*background: black
 URxvt*foreground: white
-URxvt.scrollBar: false
+URxvt*scrollBar: false
+               
+URxvt*inheritPixmap: true
+URxvt*transparent: true
+URxvt*shading: 20
 
 URxvt*color0: black
 URxvt*color1: red3
