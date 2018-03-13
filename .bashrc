@@ -7,4 +7,6 @@
 
 alias ls='ls --color=auto'
 
+alias pdflatex='pdflatex -halt-on-error'
+
 PS1='[\u@\h \W]\$ '
