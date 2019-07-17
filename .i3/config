@@ -34,7 +34,7 @@ bindsym $mod+semicolon scratchpad show
 bindsym $mod+shift+semicolon move scratchpad
 
 # start a terminal
-bindsym $mod+Return exec urxvt -cd "$(z-cwd)"
+bindsym $mod+Return exec termite -d "$(z-cwd)"
 
 # kill focused window
 bindsym $mod+q kill
