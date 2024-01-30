@@ -21,8 +21,6 @@ set background=dark
 
 set hlsearch
 
-filetype plugin indent off
-
 syntax enable
 
 set clipboard=unnamed
@@ -40,6 +38,8 @@ set guioptions-=L
 
 set hlsearch
 
+
+set tabpagemax=1000
 "commands for setting tab length
 command -nargs=1 Spacetab set shiftwidth=<args> tabstop=<args> expandtab smarttab
 command Tabtab set shiftwidth=8 tabstop=8 noexpandtab nosmarttab
@@ -48,11 +48,14 @@ command Tabtab set shiftwidth=8 tabstop=8 noexpandtab nosmarttab
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'mcchrish/nnn.vim'
 call plug#end()
 
 set splitright
 set splitbelow
 
+nnoremap <Esc>n :call system('terminator --working-directory ' . expand("%:p:h"))<CR>
+" nnoremap <Esc>n :tabe \| NnnPicker<CR>
 nnoremap <Esc>e :Files<CR>
 nnoremap <Esc>t :tabe \| Files<CR>
 nnoremap <Esc>s :vsplit \| Files<CR>
@@ -74,3 +77,8 @@ nnoremap <Esc>6 6gt<CR>
 nnoremap <Esc>7 7gt<CR>
 nnoremap <Esc>8 8gt<CR>
 nnoremap <Esc>9 9gt<CR>
+
+filetype indent off
+
+" why on earth is this default 1000
+set timeoutlen=50
