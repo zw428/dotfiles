@@ -22,9 +22,9 @@ eval "$(rbenv init - bash)"
 
 export LESS="R"
 
-export EDITOR="/usr/bin/vim"
+export EDITOR="vim-server"
 export GIT_EDITOR="/usr/bin/vim"
-export VISUAL="vim"
+export VISUAL="vim-server"
 
 export NNN_PLUG='f:fzopen;n:terminal'
 
