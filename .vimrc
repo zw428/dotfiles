@@ -61,10 +61,8 @@ nnoremap <Esc>t :tabe \| Files<CR>
 nnoremap <Esc>s :vsplit \| Files<CR>
 nnoremap <Esc>v :split \| Files<CR>
 
-nnoremap <Esc>h :wincmd h<CR>
-nnoremap <Esc>j :wincmd j<CR>
-nnoremap <Esc>k :wincmd k<CR>
-nnoremap <Esc>l :wincmd l<CR>
+nnoremap <Esc>h gT<CR>
+nnoremap <Esc>l gt<CR>
 
 nnoremap <Esc>q :q<CR>
 
@@ -79,6 +77,9 @@ nnoremap <Esc>8 8gt<CR>
 nnoremap <Esc>9 9gt<CR>
 
 filetype indent off
+
+" change window title based on file opened
+set title
 
 " why on earth is this default 1000
 set timeoutlen=50
