@@ -2,33 +2,27 @@
 # ~/.bashrc
 #
 
-source ~/.nnn
-
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-alias pdflatex='pdflatex -halt-on-error'
-
+alias grep='grep --color=auto'
+alias vim='nvim'
 PS1='[\u@\h \W]\$ '
-[ -n "$NNNLVL" ] && PS1="[NNNSH] $PS1"
+export EDITOR=nvim
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/my-stuff/path:$PATH"
-eval "$(rbenv init - bash)"
-
-export LESS="R"
-
-export EDITOR="vim-server"
-export GIT_EDITOR="/usr/bin/vim"
-export VISUAL="vim-server"
-
-export NNN_PLUG='f:fzopen;n:terminal'
-
-export NVM_DIR="$HOME/.nvm"
-export ANDROID_SDK_ROOT=/home/zack/Android/Sdk
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+osc7_cwd() {
+	local strlen=${#PWD}
+	local encoded=""
+	local pos c o
+	for (( pos=0; pos<strlen; pos++ )); do
+		c=${PWD:$pos:1}
+		case "$c" in
+			[-/:_.!\'\(\)~[:alnum:]] ) o="${c}" ;;
+			* ) printf -v o '%%%02X' "'${c}" ;;
+		esac
+		encoded+="${o}"
+	done
+	printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
+}
+PROMPT_COMMAND=${PROMPT_COMMAND:+${PROMPT_COMMAND%;}; }osc7_cwd
